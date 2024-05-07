@@ -7,18 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144156F82BE7718A00A80FA9 /* AddPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144156F72BE7718A00A80FA9 /* AddPropertyView.swift */; };
+		144156FC2BE7725B00A80FA9 /* MyPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144156FB2BE7725B00A80FA9 /* MyPropertiesView.swift */; };
 		144A09552BD4EE3600C5BEE4 /* KeynApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A09542BD4EE3600C5BEE4 /* KeynApp.swift */; };
 		144A09572BD4EE3600C5BEE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A09562BD4EE3600C5BEE4 /* ContentView.swift */; };
 		144A09592BD4EE3800C5BEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144A09582BD4EE3800C5BEE4 /* Assets.xcassets */; };
 		144A095C2BD4EE3800C5BEE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144A095B2BD4EE3800C5BEE4 /* Preview Assets.xcassets */; };
+		144A09632BD4FAC700C5BEE4 /* Keyn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144A09622BD4FAC700C5BEE4 /* Keyn.swift */; };
+		14DE4AB12BD54CFF00345E7D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4AB02BD54CFF00345E7D /* SwiftUIView.swift */; };
+		14DE4AB32BD54DD500345E7D /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4AB22BD54DD500345E7D /* Favorite.swift */; };
+		14DE4AB52BD54E1900345E7D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4AB42BD54E1900345E7D /* Profile.swift */; };
+		14DE4AB72BDE350D00345E7D /* PropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4AB62BDE350D00345E7D /* PropertyView.swift */; };
+		14DE4AB92BE0F32700345E7D /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4AB82BE0F32700345E7D /* Request.swift */; };
+		14DE4ABB2BE2572700345E7D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4ABA2BE2572700345E7D /* FilterView.swift */; };
+		14DE4ABD2BE25C0100345E7D /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE4ABC2BE25C0100345E7D /* FilterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		144156F72BE7718A00A80FA9 /* AddPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPropertyView.swift; sourceTree = "<group>"; };
+		144156FB2BE7725B00A80FA9 /* MyPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPropertiesView.swift; sourceTree = "<group>"; };
 		144A09512BD4EE3600C5BEE4 /* Keyn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Keyn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		144A09542BD4EE3600C5BEE4 /* KeynApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeynApp.swift; sourceTree = "<group>"; };
 		144A09562BD4EE3600C5BEE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		144A09582BD4EE3800C5BEE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		144A095B2BD4EE3800C5BEE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		144A09622BD4FAC700C5BEE4 /* Keyn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyn.swift; sourceTree = "<group>"; };
+		14DE4AB02BD54CFF00345E7D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		14DE4AB22BD54DD500345E7D /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		14DE4AB42BD54E1900345E7D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		14DE4AB62BDE350D00345E7D /* PropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyView.swift; sourceTree = "<group>"; };
+		14DE4AB82BE0F32700345E7D /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		14DE4ABA2BE2572700345E7D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		14DE4ABC2BE25C0100345E7D /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +71,18 @@
 		144A09532BD4EE3600C5BEE4 /* Keyn */ = {
 			isa = PBXGroup;
 			children = (
+				144156F72BE7718A00A80FA9 /* AddPropertyView.swift */,
+				14DE4ABA2BE2572700345E7D /* FilterView.swift */,
+				14DE4AB82BE0F32700345E7D /* Request.swift */,
+				14DE4AB42BD54E1900345E7D /* Profile.swift */,
+				144A09622BD4FAC700C5BEE4 /* Keyn.swift */,
+				14DE4AB02BD54CFF00345E7D /* SwiftUIView.swift */,
 				144A09542BD4EE3600C5BEE4 /* KeynApp.swift */,
 				144A09562BD4EE3600C5BEE4 /* ContentView.swift */,
+				14DE4AB22BD54DD500345E7D /* Favorite.swift */,
+				14DE4AB62BDE350D00345E7D /* PropertyView.swift */,
+				14DE4ABC2BE25C0100345E7D /* FilterViewModel.swift */,
+				144156FB2BE7725B00A80FA9 /* MyPropertiesView.swift */,
 				144A09582BD4EE3800C5BEE4 /* Assets.xcassets */,
 				144A095A2BD4EE3800C5BEE4 /* Preview Content */,
 			);
@@ -137,8 +167,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DE4AB32BD54DD500345E7D /* Favorite.swift in Sources */,
+				14DE4AB92BE0F32700345E7D /* Request.swift in Sources */,
+				14DE4ABD2BE25C0100345E7D /* FilterViewModel.swift in Sources */,
+				14DE4AB52BD54E1900345E7D /* Profile.swift in Sources */,
 				144A09572BD4EE3600C5BEE4 /* ContentView.swift in Sources */,
+				144156F82BE7718A00A80FA9 /* AddPropertyView.swift in Sources */,
+				14DE4ABB2BE2572700345E7D /* FilterView.swift in Sources */,
+				144A09632BD4FAC700C5BEE4 /* Keyn.swift in Sources */,
+				14DE4AB12BD54CFF00345E7D /* SwiftUIView.swift in Sources */,
+				14DE4AB72BDE350D00345E7D /* PropertyView.swift in Sources */,
 				144A09552BD4EE3600C5BEE4 /* KeynApp.swift in Sources */,
+				144156FC2BE7725B00A80FA9 /* MyPropertiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
