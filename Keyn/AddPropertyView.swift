@@ -21,7 +21,7 @@ struct PersonalInfo: View {
     @State private var firstName: String = ""
     @State var gender = "Select Gender"
     @State var city = "Select City"
-    @State var area = "Select Area"
+    @State var province = "Select Province"
     @State private var selectedDate = Date()
     @State private var showHomeView = false // State variable to control navigation
   var body: some View {
@@ -30,7 +30,7 @@ struct PersonalInfo: View {
                   Color(.background)
                       .ignoresSafeArea(.all)
                   VStack (alignment: .leading){
-                      Text("Personal Information")
+                      Text("Property Information")
                           .font(.title)
                           .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
                       HStack{
@@ -132,18 +132,18 @@ struct PersonalInfo: View {
                                   Spacer()
                                   Menu{
                                       Button(action: {
-                                          area = "Jeddah"
+                                          province = "Jeddah"
                                       }, label: {
                                           Text("Jeddah")
                                       })
                                       Button(action: {
-                                          area = "Eastren Province"
+                                          province = "Eastren Province"
                                       }, label: {
                                           Text("Eastren Province")
                                       }).foregroundColor(.accentColor)
                                   }label: {
                                       HStack {
-                                          Text("\(area)")
+                                          Text("\(province)")
                                           Image(systemName: "chevron.down")
                                       }
                                   }.padding(7)
@@ -181,14 +181,7 @@ struct PersonalInfo: View {
                                                 .frame(width:200))
                                   Spacer()
                               }
-                              Text("ZIP code")
-                              ZStack {
-                                  RoundedRectangle(cornerRadius: 7)
-                                      .stroke(Color.gray, lineWidth: 1)
-                                  TextField("", text: $firstName)
-                                      .frame(width: 150,height: 40)
-                                      .padding(.leading)
-                              }
+                              
                           }
                       }
                       .formStyle(.columns)

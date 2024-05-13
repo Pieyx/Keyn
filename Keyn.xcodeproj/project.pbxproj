@@ -72,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				144156F72BE7718A00A80FA9 /* AddPropertyView.swift */,
-				14DE4ABA2BE2572700345E7D /* FilterView.swift */,
 				14DE4AB82BE0F32700345E7D /* Request.swift */,
 				14DE4AB42BD54E1900345E7D /* Profile.swift */,
 				144A09622BD4FAC700C5BEE4 /* Keyn.swift */,
@@ -82,6 +81,7 @@
 				14DE4AB22BD54DD500345E7D /* Favorite.swift */,
 				14DE4AB62BDE350D00345E7D /* PropertyView.swift */,
 				14DE4ABC2BE25C0100345E7D /* FilterViewModel.swift */,
+				14DE4ABA2BE2572700345E7D /* FilterView.swift */,
 				144156FB2BE7725B00A80FA9 /* MyPropertiesView.swift */,
 				144A09582BD4EE3800C5BEE4 /* Assets.xcassets */,
 				144A095A2BD4EE3800C5BEE4 /* Preview Content */,

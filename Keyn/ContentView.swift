@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var PropretyType = "Proprety type"
     @State var showStoreDropDown: Bool = false
     @State private var showSheets: Bool = false
-    
+    @State private var showAddProp = false
     var body: some View {
         
         NavigationStack {
@@ -100,7 +100,7 @@ struct ContentView: View {
                          }.font(.footnote)
                          Spacer()
                          Button{
-                            
+                             showAddProp=true
                          }label: {
                              Image(systemName: "plus")
                                  .fontWeight(.bold)
@@ -111,7 +111,7 @@ struct ContentView: View {
                          .foregroundColor(.white)
                          .background(Color.accentColor)
                          .cornerRadius(4)
-                         Menu {
+                        Menu {
                              VStack{
                                  Button(action: {
                                      
@@ -157,7 +157,8 @@ struct ContentView: View {
                  }
                  
             }
-            
+            NavigationLink(destination: AddPropertyView(), isActive: $showAddProp) {
+            }
             .navigationBarTitleDisplayMode(.inline)
         }
         
