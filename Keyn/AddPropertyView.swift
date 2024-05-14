@@ -47,6 +47,7 @@ struct PersonalInfo: View {
                       Form{
                           VStack(alignment: .leading) {
                               Text("Full name")
+                              Text(firstName)
                               ZStack {
                                   RoundedRectangle(cornerRadius: 7)
                                       .stroke(Color.gray, lineWidth: 1)
@@ -102,6 +103,7 @@ struct PersonalInfo: View {
                                       RoundedRectangle(cornerRadius: 7)
                                           .stroke(Color.gray, lineWidth: 1)
                                       TextField("", text: $firstName)
+                                          .keyboardType(.numberPad)
                                           .frame(height: 40)
                                           .padding(.leading)
                                   }
@@ -154,6 +156,7 @@ struct PersonalInfo: View {
                                             .frame(width:200))
                                   Spacer()
                               }
+                              
                               HStack{
                                   Text("City")
                                   Spacer()

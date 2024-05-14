@@ -8,11 +8,22 @@
 import Foundation
 
 class FilterViewModel: ObservableObject{
-    @Published var rating: Int?
+    @Published var bathrooms: Int?
+    @Published var bedrooms: Int?
     @Published var propTypes: [PropTypes] = []
     @Published var pricePeriod: [PricePeriod] = []
     @Published var furnishings: [Furnishings] = []
     @Published var amenities: [Amenities] = []
+    
+    func clearAllFilters() {
+        propTypes.removeAll()
+        pricePeriod.removeAll()
+        bathrooms = 0 
+        bathrooms = 0
+        furnishings.removeAll()
+        amenities.removeAll()
+    }
+
 
 }
 extension FilterViewModel {

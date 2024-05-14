@@ -53,27 +53,11 @@ struct FilterView: View {
     }
     var body: some View {
         
-        
-//        ForEach(PropTypes.allCases, id: \.self) { filter in
-//            HStack{
-//                Image(systemName: vm.contatinsFilter(filter.rawValue) ?
-//                      "checkmark.square.fill":"square")
-//                .onTapGesture {
-//                    if !vm.contatinsFilter(filter.rawValue) {
-//                        vm.propTypes.append(filter)
-//                    } else {
-//                        vm.propTypes.removeAll() { $0.rawValue == filter.rawValue }
-//                    }
-//                }
-//                
-//                Text(filter.rawValue)
-//            }
-//        }
         ZStack{
             Color(.background)
                 .ignoresSafeArea(.all)
             ScrollView{
-                    ZStack{
+                ZStack{
                         RoundedRectangle(cornerRadius: 15)
                             .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
                             .fill(Color.white)
@@ -140,82 +124,82 @@ struct FilterView: View {
                     .padding(.horizontal, 40)
                 }
 
-                ZStack{
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
-                        .fill(Color.white)
-                        .padding(.horizontal)
-                        .frame(width:390, height: 400)
-                    VStack (alignment: .leading){
-                        HStack{
-                            Image(systemName: "bed.double")
-                            Text("Bedrooms")
-                                .fontWeight(.medium)
-                                .font(.title2)
-                        }
-                        HStack{
-                            ForEach (1...5, id: \.self) { rating in
-                                RoundedRectangle(cornerRadius:5)
-                                    .fill(.gray2)
-                                    .stroke(vm.rating == rating ? .darkPink: .gray2)
-                                    .frame(height: 50)
-                                    .overlay {
-                                        Text("\(rating)")
-                                            .foregroundColor(vm.rating == rating ? .accentColor : .black)
-                                    }.onTapGesture {
-                                        vm.rating = rating
-                                    }
-                            }
-                        }
-                        Divider()
-                        HStack{
-                            Image(systemName: "toilet")
-                            Text("Bathrooms")
-                                .fontWeight(.medium)
-                                .font(.title2)
-                        }
-                        HStack{
-                            ForEach (1...5, id: \.self) { rating in
-                                RoundedRectangle(cornerRadius:5)
-                                    .fill(.gray2)
-                                    .stroke(vm.rating == rating ? .darkPink: .gray2)
-                                    .frame(height: 50)
-                                    .overlay {
-                                        Text("\(rating)")
-                                            .foregroundColor(vm.rating == rating ? .accentColor : .black)
-                                    }.onTapGesture {
-                                        vm.rating = rating
-                                    }
-                            }
-                        }
-                        Divider()
-                        HStack{
-                            Image(systemName: "lamp.floor")
-                            Text("Furnishings")
-                                .fontWeight(.medium)
-                                .font(.title2)
-                        }
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))] ) {
-                            ForEach(Furnishings.allCases, id: \.self) { furn in
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(.gray2)
-                                    .stroke(vm.containsFurn(furn.rawValue) ? .darkPink : .gray2)
-                                    .frame(height: 50)
-                                    .overlay {
-                                        Text("\(furn.rawValue)")
-                                            .foregroundColor(vm.containsFurn(furn.rawValue) ? .accentColor : .black)
-                                    }
-                                    .onTapGesture {
-                                        if !vm.containsFurn(furn.rawValue) {
-                                            vm.furnishings.append(furn)
-                                        } else {
-                                            vm.furnishings.removeAll { $0.rawValue == furn.rawValue }
-                                        }
-                                    }
-                            }
-                        }
-                    }.padding(.horizontal,40)
-                }
+//                ZStack{
+//                    RoundedRectangle(cornerRadius: 15)
+//                        .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
+//                        .fill(Color.white)
+//                        .padding(.horizontal)
+//                        .frame(width:390, height: 400)
+//                    VStack (alignment: .leading){
+//                        HStack{
+//                            Image(systemName: "bed.double")
+//                            Text("Bedrooms")
+//                                .fontWeight(.medium)
+//                                .font(.title2)
+//                        }
+//                        HStack{
+//                            ForEach (1...5, id: \.self) { bedroom in
+//                                RoundedRectangle(cornerRadius:5)
+//                                    .fill(.gray2)
+//                                    .stroke(vm.bedroom == bedroom ? .darkPink: .gray2)
+//                                    .frame(height: 50)
+//                                    .overlay {
+//                                        Text("\(bedroom)")
+//                                            .foregroundColor(vm.bedroom == bedroom ? .accentColor : .black)
+//                                    }.onTapGesture {
+//                                        vm.bedroom = bedroom
+//                                    }
+//                            }
+//                        }
+//                        Divider()
+//                        HStack{
+//                            Image(systemName: "toilet")
+//                            Text("Bathrooms")
+//                                .fontWeight(.medium)
+//                                .font(.title2)
+//                        }
+//                        HStack{
+//                            ForEach (1...5, id: \.self) { bathroom in
+//                                RoundedRectangle(cornerRadius:5)
+//                                    .fill(.gray2)
+//                                    .stroke(vm.bathroom == bathroom ? .darkPink: .gray2)
+//                                    .frame(height: 50)
+//                                    .overlay {
+//                                        Text("\(bathroom)")
+//                                            .foregroundColor(vm.bathroom == bathroom ? .accentColor : .black)
+//                                    }.onTapGesture {
+//                                        vm.bathroom = bathroom
+//                                    }
+//                            }
+//                        }
+//                        Divider()
+//                        HStack{
+//                            Image(systemName: "lamp.floor")
+//                            Text("Furnishings")
+//                                .fontWeight(.medium)
+//                                .font(.title2)
+//                        }
+//                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))] ) {
+//                            ForEach(Furnishings.allCases, id: \.self) { furn in
+//                                RoundedRectangle(cornerRadius: 5)
+//                                    .fill(.gray2)
+//                                    .stroke(vm.containsFurn(furn.rawValue) ? .darkPink : .gray2)
+//                                    .frame(height: 50)
+//                                    .overlay {
+//                                        Text("\(furn.rawValue)")
+//                                            .foregroundColor(vm.containsFurn(furn.rawValue) ? .accentColor : .black)
+//                                    }
+//                                    .onTapGesture {
+//                                        if !vm.containsFurn(furn.rawValue) {
+//                                            vm.furnishings.append(furn)
+//                                        } else {
+//                                            vm.furnishings.removeAll { $0.rawValue == furn.rawValue }
+//                                        }
+//                                    }
+//                            }
+//                        }
+//                    }.padding(.horizontal,40)
+//                }
                 ZStack{
                     RoundedRectangle(cornerRadius: 15)
                         .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
@@ -237,108 +221,82 @@ struct FilterView: View {
                         }.pickerStyle(.wheel)
                     }.padding(.horizontal,40)
                 }
-//                ZStack{
-//                    RoundedRectangle(cornerRadius: 15)
-//                        .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
-//                        .fill(Color.white)
-//                        .padding(.horizontal)
-//                        .frame(width:390, height: 200)
-//                    VStack (alignment: .leading){
-//                        Text("Amenities")
-//                            .fontWeight(.medium)
-//                            .font(.title2)
-////                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))] ) {
-////                            ForEach(Amenities.allCases, id: \.self) { amen in
-////                                RoundedRectangle(cornerRadius: 5)
-////                                    .fill(.gray2)
-////                                    .stroke(vm.containsAmen(amen.rawValue) ? .darkPink : .gray2)
-////                                    .frame(height: 50)
-////                                    .overlay {
-////                                        Text("\(amen.rawValue)")
-////                                            .foregroundColor(vm.containsAmen(amen.rawValue) ? .accentColor : .black)
-////                                    }
-////                                    .onTapGesture {
-////                                        if !vm.containsAmen(amen.rawValue) {
-////                                            vm.amenities.append(amen)
-////                                        } else {
-////                                            vm.amenities.removeAll { $0.rawValue == amen.rawValue }
-////                                        }
-////                                    }
-////                            }
-////                        }
-//
-//                    }.padding(.horizontal,40)
-//                }
+                
                 ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
-                                    .fill(Color.white)
-                                    .padding(.horizontal)
-                                    .frame(width:390, height: .infinity)
-                                
-                                VStack (alignment: .leading){
-                                    Text("Amenities")
-                                        .fontWeight(.medium)
-                                        .font(.title2)
-                                    
-                                    // Check if amenities list needs to be expanded
-                                    if isAmenitiesExpanded {
-                                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))]) {
-                                            ForEach(Amenities.allCases, id: \.self) { amen in
-                                                RoundedRectangle(cornerRadius: 5)
-                                                    .fill(.gray2)
-                                                    .stroke(vm.containsAmen(amen.rawValue) ? .darkPink : .gray2)
-                                                    .frame(height: 50)
-                                                    .overlay {
-                                                        Text("\(amen.rawValue)")
-                                                            .foregroundColor(vm.containsAmen(amen.rawValue) ? .accentColor : .black)
-                                                    }
-                                                    .onTapGesture {
-                                                        if !vm.containsAmen(amen.rawValue) {
-                                                            vm.amenities.append(amen)
-                                                        } else {
-                                                            vm.amenities.removeAll { $0.rawValue == amen.rawValue }
-                                                        }
-                                                    }
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke( Color(hue: 1.0, saturation: 0.004, brightness: 0.921), lineWidth: 1)
+                        .fill(Color.white)
+                        .padding(.horizontal)
+                        .frame(width:390, height: .infinity)
+                    
+                    VStack (alignment: .leading){
+                        Text("Amenities")
+                            .fontWeight(.medium)
+                            .font(.title2)
+                        
+                        // Check if amenities list needs to be expanded
+                        if isAmenitiesExpanded {
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))]) {
+                                ForEach(Amenities.allCases, id: \.self) { amen in
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(.gray2)
+                                        .stroke(vm.containsAmen(amen.rawValue) ? .darkPink : .gray2)
+                                        .frame(height: 50)
+                                        .overlay {
+                                            Text("\(amen.rawValue)")
+                                                .foregroundColor(vm.containsAmen(amen.rawValue) ? .accentColor : .black)
+                                        }
+                                        .onTapGesture {
+                                            if !vm.containsAmen(amen.rawValue) {
+                                                vm.amenities.append(amen)
+                                            } else {
+                                                vm.amenities.removeAll { $0.rawValue == amen.rawValue }
                                             }
                                         }
-                                    } else {
-                                        // Render only the first five amenities and a button to expand
-                                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))]) {
-                                            ForEach(Amenities.allCases.prefix(5), id: \.self) { amen in
-                                                RoundedRectangle(cornerRadius: 5)
-                                                    .fill(.gray2)
-                                                    .stroke(vm.containsAmen(amen.rawValue) ? .darkPink : .gray2)
-                                                    .frame(height: 50)
-                                                    .overlay {
-                                                        Text("\(amen.rawValue)")
-                                                            .foregroundColor(vm.containsAmen(amen.rawValue) ? .accentColor : .black)
-                                                    }
-                                                    .onTapGesture {
-                                                        if !vm.containsAmen(amen.rawValue) {
-                                                            vm.amenities.append(amen)
-                                                        } else {
-                                                            vm.amenities.removeAll { $0.rawValue == amen.rawValue }
-                                                        }
-                                                    }
-                                            }
-                                        }
-                                        
-                                        // Button to toggle amenities list expansion
-                                        Button(action: {
-                                            isAmenitiesExpanded.toggle()
-                                        }) {
-                                            Text("Show More Amenities")
-                                                .foregroundColor(.accentColor)
-                                        }
-                                    }
-                                }.padding(.horizontal,40)
+                                }
                             }
+                        } else {
+                            // Render only the first five amenities and a button to expand
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))]) {
+                                ForEach(Amenities.allCases.prefix(5), id: \.self) { amen in
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(.gray2)
+                                        .stroke(vm.containsAmen(amen.rawValue) ? .darkPink : .gray2)
+                                        .frame(height: 50)
+                                        .overlay {
+                                            Text("\(amen.rawValue)")
+                                                .foregroundColor(vm.containsAmen(amen.rawValue) ? .accentColor : .black)
+                                        }
+                                        .onTapGesture {
+                                            if !vm.containsAmen(amen.rawValue) {
+                                                vm.amenities.append(amen)
+                                            } else {
+                                                vm.amenities.removeAll { $0.rawValue == amen.rawValue }
+                                            }
+                                        }
+                                }
+                            }
+                            
+                            // Button to toggle amenities list expansion
+                            Button(action: {
+                                isAmenitiesExpanded.toggle()
+                            }) {
+                                Text("Show More")
+                                    .foregroundColor(.accentColor)
+                            }.padding(5)
+                                .padding(.leading,100)
+                        }
+                    }
+                    .padding(.horizontal,40)
+                    .padding(.vertical)
+
+                }
+
             }
         }
         HStack{
             Button{
-
+                vm.clearAllFilters()
             }label: {
                 Text("Clear All")
                     .fontWeight(.medium)
@@ -351,7 +309,7 @@ struct FilterView: View {
                 dismiss()
             }label: {
                 Text("Save Changes")
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
             }
             .padding(.horizontal,10)
             .padding(9)
@@ -367,3 +325,4 @@ struct FilterView: View {
 #Preview {
     FilterView(vm: FilterViewModel())
 }
+
