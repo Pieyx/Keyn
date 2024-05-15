@@ -241,6 +241,28 @@ struct PropertyInfo: View {
     init(vm: FilterViewModel){
         _vm = StateObject(wrappedValue: vm)
     }
+    
+    func calculatePhotoSlots() -> [String: Int] {
+            var photoSlots: [String: Int] = [:]
+            
+            if let bedroomCount = Int(bedrooms) {
+                photoSlots["bedroom"] = bedroomCount
+            }
+            if let bathroomCount = Int(bathrooms) {
+                photoSlots["bathroom"] = bathroomCount
+            }
+            if let livingCount = Int(living) {
+                photoSlots["living"] = livingCount
+            }
+            
+            for amenity in Amenities.allCases {
+                if vm.containsAmen(amenity.rawValue) {
+                        photoSlots[amenity.rawValue] = 1
+                }
+            }
+            
+            return photoSlots
+        }
     var body: some View {
         ScrollView{
             ZStack{
@@ -492,7 +514,7 @@ struct PropertyInfo: View {
             
         }.padding(.trailing)
         .padding()
-        NavigationLink(destination: AttachmentView(), isActive: $showHomeView) {
+        NavigationLink(destination: AttachmentView(photoSlots: calculatePhotoSlots()), isActive: $showHomeView) {
             
         }
 
@@ -500,40 +522,44 @@ struct PropertyInfo: View {
 }
 
 struct AttachmentView: View {
-    @State private var selectedImages: [UIImage?] = Array(repeating: nil, count: 5)
+    var photoSlots: [String: Int]
+    @State private var selectedImages: [UIImage?]
     @State private var isImagePickerPresented = false
     @State private var selectedIndex: Int?
 
     @State private var showHomeView = false // State variable to control navigation
 
+    init(photoSlots: [String: Int]) {
+        self.photoSlots = photoSlots
+        self._selectedImages = State(initialValue: Array(repeating: nil, count: photoSlots.values.reduce(0, +)))
+    }
+
     var body: some View {
-        
-            
-                ScrollView{
-                    ZStack{
-                        Color(.background)
-                            .ignoresSafeArea(.all)
-                        VStack (alignment: .leading){
-                            Text("Attachments")
-                                .font(.title)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
-                            HStack{
-                                Text("All field marked with")
-                                Text("*")
-                                    .foregroundColor(.red)
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                Text("are required")
-                            }.fontWeight(.thin)
-                            Divider()
-                    
-                        Text("Property Attachments")
-                            .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
-                            .padding(.bottom,5)
-                        ForEach(0..<2, id: \.self) { index in
-                            ZStack{
+        ScrollView {
+            ZStack {
+                Color(.background)
+                    .ignoresSafeArea(.all)
+                VStack(alignment: .leading) {
+                    Text("Attachments")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    HStack {
+                        Text("All field marked with")
+                        Text("*")
+                            .foregroundColor(.red)
+                            .fontWeight(.bold)
+                        Text("are required")
+                    }.fontWeight(.thin)
+                    Divider()
+                    ForEach(photoSlots.keys.sorted(), id: \.self) { key in
+                        Text("\(key.capitalized) Attachments")
+                            .fontWeight(.semibold)
+                            .padding(.bottom, 5)
+                        ForEach(0..<photoSlots[key]!, id: \.self) { index in
+                            ZStack {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.gray, lineWidth: 1)
-                                    .frame(width: 350,height: 40)
+                                    .frame(width: 350, height: 40)
                                 HStack {
                                     Button(action: {
                                         selectedIndex = index
@@ -547,13 +573,13 @@ struct AttachmentView: View {
                                                 Rectangle()
                                                     .stroke(Color.gray, lineWidth: 1)
                                             )
-                                    }.padding(.leading,-80)
+                                    }
+                                    .padding(.leading, -80)
                                     if let image = selectedImages[index] {
                                         Image(uiImage: image)
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 120, height: 30)
-                                            
                                     } else {
                                         Text("No image")
                                             .foregroundColor(.gray)
@@ -562,76 +588,39 @@ struct AttachmentView: View {
                                 }
                             }
                         }
-                        Divider()
-                        Text("Amenitis Attachments")
-                            .fontWeight(/*@START_MENU_TOKEN@*/.semibold/*@END_MENU_TOKEN@*/)
-                            .padding(.bottom,5)
-                        ForEach(0..<2, id: \.self) { index in
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray, lineWidth: 1)
-                                    .frame(width: 350,height: 40)
-                                HStack {
-                                    Button(action: {
-                                        selectedIndex = index
-                                        isImagePickerPresented = true
-                                    }) {
-                                        Text(selectedImages[index] == nil ? "Select Picture" : "Replace Picture")
-                                            .padding(5)
-                                            .background(Color.white)
-                                            .font(.footnote)
-                                            .overlay(
-                                                Rectangle()
-                                                    .stroke(Color.gray, lineWidth: 1)
-                                            )
-                                    }.padding(.leading,-80)
-                                    if let image = selectedImages[index] {
-                                        Image(uiImage: image)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 120, height: 30)
-                                            
-                                    } else {
-                                        Text("No image")
-                                            .foregroundColor(.gray)
-                                            .frame(width: 120)
-                                    }
-                                }
-                            }
-                        }
-                        Divider()
-                            Text("3/4")
-                                .foregroundColor(.gray)
-                                .padding(.leading,330)
-                                .padding(.top)
-                        }.padding()
-                }
-                HStack{
-                    Spacer()
-                    
-                    Button{
-                        showHomeView = true
-                    }label: {
-                        Text("Next")
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     }
-                    .padding(.horizontal,10)
-                    .padding(9)
-                    .foregroundColor(.white)
-                    .background(Color.accentColor)
-                    .cornerRadius(4)
-                    
-                }.padding(.trailing)
-                .padding()
-                NavigationLink(destination: PolicyView(), isActive: $showHomeView) {
-                    
-                }
+                    Divider()
+                    Text("3/4")
+                        .foregroundColor(.gray)
+                        .padding(.leading, 330)
+                        .padding(.top)
+                }.padding()
             }
-            .sheet(isPresented: $isImagePickerPresented) {
-                ImagePicker(selectedImages: $selectedImages, selectedIndex: $selectedIndex)
+            HStack {
+                Spacer()
+                Button {
+                    showHomeView = true
+                } label: {
+                    Text("Next")
+                        .fontWeight(.bold)
+                }
+                .padding(.horizontal, 10)
+                .padding(9)
+                .foregroundColor(.white)
+                .background(Color.accentColor)
+                .cornerRadius(4)
+            }
+            .padding(.trailing)
+            .padding()
+            NavigationLink(destination: PolicyView(), isActive: $showHomeView) {
+                EmptyView()
             }
         }
+        .sheet(isPresented: $isImagePickerPresented) {
+            ImagePicker(selectedImages: $selectedImages, selectedIndex: $selectedIndex)
+        }
     }
+}
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage?]
@@ -687,6 +676,7 @@ struct PolicyView: View {
                         .padding(.vertical)
                     Text("We shall not be hold responsible for any content that appears on your App. You agree to protect and defend us against all claims that is rising on your App. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, .")
                         .font(.body)
+
                     Text("4/4")
                         .foregroundColor(.gray)
                         .padding(.leading,330)
@@ -714,6 +704,4 @@ struct PolicyView: View {
     }
 }
 
-#Preview {
-    PolicyView()
-}
+

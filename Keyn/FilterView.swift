@@ -30,7 +30,7 @@ enum Furnishings: String, CaseIterable, Codable{
 
 enum Amenities: String, CaseIterable, Codable{
     case garden = "Garden"
-    case ac = "Central A/C"
+    case CentralAC = "Central A/C"
     case laundryRoom = "Laundry Room"
     case kitchenAppliances = "Kitchen Appliances"
     case petsAllowed = "Pets Allowed"
