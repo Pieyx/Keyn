@@ -34,12 +34,7 @@ enum Amenities: String, CaseIterable, Codable{
     case laundryRoom = "Laundry Room"
     case kitchenAppliances = "Kitchen Appliances"
     case petsAllowed = "Pets Allowed"
-    case bes = "bes"
-    case es = "es"
-    case bs = "bs"
-    case bees = "bees"
-    case ess = "ess"
-    case bbs = "bbs"
+    case closet = "Walk-in Closet"
 }
 
 struct FilterView: View {
