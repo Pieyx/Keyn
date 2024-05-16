@@ -214,6 +214,8 @@ struct PersonalInfo: View {
   }
 
 struct PropertyInfo: View {
+    @State private var selection = 0
+
     @State private var street: String = ""
     @State private var streetShow: String = ""
     @State private var deedNumber: String = ""
@@ -227,6 +229,10 @@ struct PropertyInfo: View {
     @State private var network: String = ""
     @State private var networks = ["STC", "Mobily", "Zain"]
 
+    @State private var period: String = ""
+    @State private var periods = ["Yearly","Monthly", "Daily"]
+    @State var price: String = ""
+    
     @State var city = ""
     @State var province = ""
     @State var district = ""
@@ -463,6 +469,39 @@ struct PropertyInfo: View {
                                 }
                             }
                             Divider()
+                            Text("Property Pricing")
+                                .fontWeight(.semibold)
+                                .padding(.bottom,5)
+                            HStack{
+                                Text("Property Price")
+                                Spacer()
+                                Text("Price Period")
+                                    .padding(.trailing,50)
+                            }
+                            HStack{
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 7)
+                                        .stroke(Color.gray, lineWidth: 1)
+                                    TextField("SR", text: $price)
+                                        .keyboardType(.numberPad)
+                                        .frame(height: 40)
+                                        .padding(.leading)
+                                }
+                                Picker(selection: $period, label: Text("")) {
+                                    ForEach(periods, id: \.self) { period in
+                                        Text(period).tag(period)
+                                    }
+                                }
+                                .pickerStyle(MenuPickerStyle())
+                                .foregroundColor(.gray)
+                                .frame(width: 140,height: 40, alignment: .leading)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .stroke(Color.gray, lineWidth: 1)
+                                        
+                                )
+                            }
+                            Divider()
                             Text("Property Amenities")
                                 .fontWeight(.semibold)
                                 .padding(.bottom,5)
@@ -489,7 +528,6 @@ struct PropertyInfo: View {
                     }
                     .formStyle(.columns)
                     .font(.callout)
-                    .fontWeight(.light)
                     Text("2/4")
                         .foregroundColor(.gray)
                         .padding(.leading,330)
@@ -705,3 +743,6 @@ struct PolicyView: View {
 }
 
 
+#Preview{
+    PropertyInfo(vm: FilterViewModel())
+}
