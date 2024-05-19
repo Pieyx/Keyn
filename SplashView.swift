@@ -18,7 +18,7 @@ struct SplashView: View {
                 .edgesIgnoringSafeArea(.all)
 
             if self.isActive {
-                ContentView()
+                OnBoardingView()
             } else {
                 Image("Keyn")
                     .offset(x: moveOut ? UIScreen.main.bounds.width : 0, y: 20.0)

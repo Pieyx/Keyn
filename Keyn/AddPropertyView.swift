@@ -744,5 +744,5 @@ struct PolicyView: View {
 
 
 #Preview{
-    PropertyInfo(vm: FilterViewModel())
+    PersonalInfo()
 }
